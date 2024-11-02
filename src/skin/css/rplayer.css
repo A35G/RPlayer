@@ -1,0 +1,31 @@
+#rplayer {padding: 3px; display: inline flex;}
+.dark {background-color: #000};
+
+#rpcontainer {padding: 3px;}
+.big_card {width: 250px; height: 300px; border: 1px solid #000; border-radius: 5px; margin: 5px;}
+.big_card.light {border: 1px solid #E0E0E0;}
+
+#rpcover {width: 98%; height: 75%; border: 1px solid transparent; margin: 2px; border-radius: 10px; background-image: url('../img/rpcover/cover-music.png'); background-size: contain; background-repeat: no-repeat; background-position: center center;}
+/*#rpcover canvas {border: 1px solid #00FF00; width: 100%; height: 100%; border-radius: 10px;}*/
+#rpcontrols {width: 98%; height: 21%; border: 0px solid #00FF00; margin: 2px;}
+#rprogress {height: 5px; background-color: #E0E0E0; width: 93%; margin: 10px 10px; border-radius: 5px;}
+#rprogress-bar {width: 15%; height: 100%; background-color: #4caf50; border-radius: 5px;}
+
+#rpbuttons {width: 100%; height: 55%; display: flex; border: 0px solid #0000FF; justify-content: center; align-items: center;}
+
+#rpsngtime {font-family: 'Verdana', Roboto; font-size: 0.8em; color: #000; margin-right: 5px;}
+#rpsngtime.light {color: #E0E0E0;}
+#rpsngtime > span {font-family: 'Verdana', Roboto; font-size: 0.8em; margin: 2px;}
+
+.rpbttcn {border: 0px solid #CCC; background: transparent; width: 20px; height: 20px; margin: 3px; display: inline-flex; align-items: center; justify-content: center; cursor: pointer;}
+.w1x {width: 35px; height: 35px;}
+.rpbttcn.light svg path {fill: #E0E0E0;}
+
+#rpareav {display: flex; justify-content: center; align-items: center; margin: 3px;}
+
+#volumec {width: 35px; background-color: #000; -webkit-appearance: none; height: 3px; margin-left: 5px; border-radius: 5px;}
+#volumec.light { background-color: #E0E0E0;}
+#volumec::-webkit-slider-thumb {-webkit-appearance: none; background-color: #FFF; width: 10px; height: 10px; border: 1px solid #000; border-radius: 50%;}
+#volumec.light::-webkit-slider-thumb {background-color: #E0E0E0; border: 1px solid #AAA;}
+#volumec::-moz-range-thumb {-webkit-appearance: none; background-color: #FFF; width: 10px; height: 10px; border: 1px solid #000; border-radius: 50%;}
+#volumec.light::-moz-range-thumb {background-color: #E0E0E0; border: 1px solid #AAA;}

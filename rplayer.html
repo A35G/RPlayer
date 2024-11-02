@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title></title>
+        <link rel="stylesheet" type="text/css" href="src/skin/css/rplayer.css">
+    </head>
+    <body>
+        <div id="rplayer">
+            <audio id="rpaudio">
+                
+            </audio>
+            <div class="big_card" id="rpcontainer">
+                <div id="rpcover"></div>
+                <div id="rpcontrols">
+                    <div id="rprogress">
+                        <div id="rprogress-bar"></div>
+                    </div>
+                    <div id="rpbuttons">
+                        <div id="rpsngtime">
+                            <span id="current-time">0:00</span>/<span id="total-time">0:00</span>
+                        </div>
+
+                        <button id="bprevious" class="rpbttcn" type="button"></button>
+
+                        <button id="pptrack" class="rpbttcn w1x" type="button"></button>
+
+                        <button id="bforward" class="rpbttcn" type="button"></button>
+
+                        <div id="rpareav">
+                            <button id="volume" class="rpbttcn" type="button"></button>
+
+                            <input type="range" id="volumec" min="0" max="100" step="1" value="100">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            window.onload = () => {
+                const taudio = document.getElementById("rpaudio");
+                //const source = document.getElementById('rpsrc');
+                const volume = document.getElementById("volume");
+                const mtrack = document.getElementById("pptrack");
+                const vrange = document.getElementById("volumec");
+                const bttprv = document.getElementById("bprevious");
+                const bttfrw = document.getElementById("bforward");
+                const trpbar = document.getElementById("rprogress-bar");
+
+                let ttime = document.getElementById("total-time");
+                const vstart = 67;
+
+                let controls = {
+                    'mute': {
+                        label: 'Disattiva Audio',
+                        icon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M215 71.1L126.1 160H24c-13.3 0-24 10.7-24 24v144c0 13.3 10.7 24 24 24h102.1l89 89c15 15 41 4.5 41-17V88c0-21.5-26-32-41-17zM461.6 256l45.6-45.6c6.3-6.3 6.3-16.5 0-22.8l-22.8-22.8c-6.3-6.3-16.5-6.3-22.8 0L416 210.4l-45.6-45.6c-6.3-6.3-16.5-6.3-22.8 0l-22.8 22.8c-6.3 6.3-6.3 16.5 0 22.8L370.4 256l-45.6 45.6c-6.3 6.3-6.3 16.5 0 22.8l22.8 22.8c6.3 6.3 16.5 6.3 22.8 0L416 301.6l45.6 45.6c6.3 6.3 16.5 6.3 22.8 0l22.8-22.8c6.3-6.3 6.3-16.5 0-22.8L461.6 256z"/></svg>'
+                    },
+                    'unmute': {
+                        label: 'Attiva Audio',
+                        icon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M215 71.1L126.1 160H24c-13.3 0-24 10.7-24 24v144c0 13.3 10.7 24 24 24h102.1l89 89c15 15 41 4.5 41-17V88c0-21.5-26-32-41-17zm233.3-51.1c-11.2-7.3-26.2-4.2-33.5 7-7.3 11.2-4.2 26.2 7 33.5 66.3 43.5 105.8 116.6 105.8 195.6 0 79-39.6 152.1-105.8 195.6-11.2 7.3-14.3 22.3-7 33.5 7 10.7 21.9 14.6 33.5 7C528.3 439.6 576 351.3 576 256S528.3 72.4 448.4 20zM480 256c0-63.5-32.1-121.9-85.8-156.2-11.2-7.1-26-3.8-33.1 7.5s-3.8 26.2 7.4 33.4C408.3 166 432 209.1 432 256s-23.7 90-63.5 115.4c-11.2 7.1-14.5 22.1-7.4 33.4 6.5 10.4 21.1 15.1 33.1 7.5C447.9 377.9 480 319.5 480 256zm-141.8-76.9c-11.6-6.3-26.2-2.2-32.6 9.5-6.4 11.6-2.2 26.2 9.5 32.6C328 228.3 336 241.6 336 256c0 14.4-8 27.7-20.9 34.8-11.6 6.4-15.8 21-9.5 32.6 6.4 11.7 21.1 15.8 32.6 9.5 28.2-15.6 45.8-45 45.8-76.9s-17.5-61.3-45.8-76.9z"/></svg>'
+                    },
+                    'play': {
+                        label: 'Play',
+                        icon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M371.7 238l-176-107c-15.8-8.8-35.7 2.5-35.7 21v208c0 18.4 19.8 29.8 35.7 21l176-101c16.4-9.1 16.4-32.8 0-42zM504 256C504 119 393 8 256 8S8 119 8 256s111 248 248 248 248-111 248-248zm-448 0c0-110.5 89.5-200 200-200s200 89.5 200 200-89.5 200-200 200S56 366.5 56 256z"/></svg>'
+                    },
+                    'pause': {
+                        label: 'Pausa',
+                        icon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm96-280v160c0 8.8-7.2 16-16 16h-48c-8.8 0-16-7.2-16-16V176c0-8.8 7.2-16 16-16h48c8.8 0 16 7.2 16 16zm-112 0v160c0 8.8-7.2 16-16 16h-48c-8.8 0-16-7.2-16-16V176c0-8.8 7.2-16 16-16h48c8.8 0 16 7.2 16 16z"/></svg>'
+                    },
+                    'previous': {
+                        label: 'Precedente',
+                        icon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M11.5 280.6l192 160c20.6 17.2 52.5 2.8 52.5-24.6V96c0-27.4-31.9-41.8-52.5-24.6l-192 160c-15.3 12.8-15.3 36.4 0 49.2zm256 0l192 160c20.6 17.2 52.5 2.8 52.5-24.6V96c0-27.4-31.9-41.8-52.5-24.6l-192 160c-15.3 12.8-15.3 36.4 0 49.2z"/></svg>'
+                    },
+                    'forward': {
+                        label: 'Successivo',
+                        icon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M500.5 231.4l-192-160C287.9 54.3 256 68.6 256 96v320c0 27.4 31.9 41.8 52.5 24.6l192-160c15.3-12.8 15.3-36.4 0-49.2zm-256 0l-192-160C31.9 54.3 0 68.6 0 96v320c0 27.4 31.9 41.8 52.5 24.6l192-160c15.3-12.8 15.3-36.4 0-49.2z"/></svg>'
+                    }
+                };
+
+                let source = null;
+
+                const song = './src/media/file_example.mp3';
+
+                function mngVolume() {
+                    const vtp = volume.getAttribute("data-btype");
+                    if (vtp === "unmute") {
+                        volume.setAttribute("data-btype", "mute");
+                        volume.innerHTML = controls['mute'].icon;
+                        vrange.value = 0;
+                    } else if (vtp === "mute") {
+                        volume.setAttribute("data-btype", "unmute");
+                        volume.innerHTML = controls['unmute'].icon;
+                        const vs = vrange.getAttribute("data-sndv");
+                        vrange.value = vs;
+                    }
+                }
+
+                function mngPPtrack() {
+                    const ptp = mtrack.getAttribute("data-btype");
+                    if (ptp === "play") {
+                        mtrack.setAttribute("data-btype", "pause");
+                        mtrack.innerHTML = controls['pause'].icon;
+                    } else if (ptp === "pause") {
+                        mtrack.setAttribute("data-btype", "play");
+                        mtrack.innerHTML = controls['play'].icon;
+                    }
+                }
+
+                const toTime = (seconds) => {
+                    let date = new Date(null);
+                    date.setSeconds(parseInt(seconds));
+                    const dtx = date.toISOString();
+                    return (
+                        (dtx.substr(11, 3) === '00:') 
+                            ? dtx.substr(14, 5) 
+                            : dtx.substr(11, 3)
+                    );
+                }
+
+                volume.innerHTML = controls["unmute"].icon;
+                volume.setAttribute("data-btype", "unmute");
+                volume.onclick = mngVolume;
+
+                mtrack.innerHTML = controls["play"].icon;
+                mtrack.setAttribute("data-btype", "play");
+                mtrack.disabled = true;
+                mtrack.onclick = mngPPtrack;
+
+                vrange.value = vstart;
+                vrange.setAttribute("data-sndv", vstart);
+                vrange.addEventListener("input", (event) => {
+                    vrange.setAttribute("data-sndv", event.target.value);
+                });
+
+                bttprv.innerHTML = controls["previous"].icon;
+                bttprv.setAttribute("data-btype", "previous");
+
+                bttfrw.innerHTML = controls["forward"].icon;
+                bttfrw.setAttribute("data-btype", "forward");
+
+                //source.setAttribute("src", song);
+
+                taudio.addEventListener("loadstart", (event) => {
+                    console.log("Request media resource...");
+                });
+
+                taudio.onloadedmetadata = (event) => {
+                    console.log(event);
+                };
+
+                taudio.onprogress = () => {
+                    console.log("Loading media...");
+                };
+
+                taudio.canplay = () => {
+                    console.log("Can Play sound!");
+                    mtrack.disabled = false;
+                };
+
+                taudio.addEventListener("canplaythrough", (event) => {
+                    console.log("Can Play sound 2!");
+                    mtrack.disabled = false;
+                    if (!isNaN(taudio.duration)) {
+                        ttime.textContent = toTime(taudio.duration);
+                    }
+                });
+
+                taudio.addEventListener("timeupdate", () => {
+                    trpbar.style.width = Math.floor((taudio.currentTime / taudio.duration) * 100,) + '%';
+                });
+
+                source = document.createElement("source");
+                source.setAttribute("src", song);
+                source.setAttribute("type", "audio/mpeg");
+                source.id = "rpsrc";
+
+                taudio.appendChild(source);
+            }
+        </script>
+
+    </body>
+</html>
