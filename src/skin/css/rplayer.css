@@ -29,3 +29,8 @@
 #volumec.light::-webkit-slider-thumb {background-color: #E0E0E0; border: 1px solid #AAA;}
 #volumec::-moz-range-thumb {-webkit-appearance: none; background-color: #FFF; width: 10px; height: 10px; border: 1px solid #000; border-radius: 50%;}
 #volumec.light::-moz-range-thumb {background-color: #E0E0E0; border: 1px solid #AAA;}
+
+.rpbttcn[data-btt='play'] {display: inline-flex; content: ''; background-image: url('../img/play-circle-regular.svg'); background-size: 30px 30px; width: 30px; height: 30px;}
+.rpbttcn[data-btt='pause'] {display: inline-flex; content: ''; background-image: url('../img/pause-circle-regular.svg'); background-size: 30px 30px; width: 30px; height: 30px;}
+.rpbttcn[data-btt='mute'] {display: inline-flex; content: ''; background-image: url('../img/volume-up-solid.svg'); background-size: 15px 15px; width: 15px; height: 15px;}
+.rpbttcn[data-btt='unmute'] {display: inline-flex; content: ''; background-image: url('../img/volume-mute-solid.svg'); background-size: 15px 15px; width: 15px; height: 15px;}
