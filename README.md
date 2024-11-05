@@ -1,5 +1,5 @@
 # RPlayer
-My custom audio player in HTML5 and JavaScript.
+My custom audio player in HTML5 and JavaScript without dependencies.
 
 ### Features
 
@@ -19,6 +19,7 @@ My custom audio player in HTML5 and JavaScript.
   - [ ] Display audio cover image or show default image for audio files with no cover image.
   - [ ] Display the song title or audio file name.
   - [ ] Different skins to choose for the player interface.
+  - [ ] Audio visualizer (audio spectrum)
 
 ### Preview
 
