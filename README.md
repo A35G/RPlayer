@@ -8,6 +8,7 @@ My custom audio player in HTML5 and JavaScript.
   - [x] Display of audio track duration (minutes and seconds) and progress during playback.
   - [x] Interactive sound bar to adjust playback volume.
   - [x] Use the button for audio, to set or remove the “mute” mode during playback.
+  - [x] Light/Dark Theme
 
 ### Upcoming
 
@@ -23,7 +24,9 @@ My custom audio player in HTML5 and JavaScript.
 
 With the first version currently available you will get what can be seen in the screenshot available below.
 
-<img src="./screenshots/RPlayer.png" />
+| <img src="./screenshots/RPlayer_-_Light.png" /> | <img src="./screenshots/RPlayer_-_Dark.png" /> |
+| :---: | :---: |
+| Light Theme | Dark Theme |
 
 ### Support
 
