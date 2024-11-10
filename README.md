@@ -13,13 +13,13 @@ My custom audio player in HTML5 and JavaScript without dependencies.
 ### Upcoming
 
   - [ ] Audio Playlist Management
-  - [ ] Display "Next" and "Previous" buttons (and enable their functionality) with more audio track.
+  - [ ] Display "Next" and "Previous" buttons (and enable their functionality) with more audio track. *in testing*
   - [ ] Display "Random" (or "Shuffle") button (and enable their functionality) with more audio track.
   - [ ] Display "Loop" button (and enable their functionality).
   - [ ] Display audio cover image or show default image for audio files with no cover image.
   - [ ] Display the song title or audio file name.
-  - [ ] Different skins to choose for the player interface.
-  - [ ] Audio visualizer (audio spectrum)
+  - [ ] Different skins to choose for the player interface. *in development*
+  - [ ] Audio visualizer (audio spectrum) *in development*
 
 ### Preview
 
