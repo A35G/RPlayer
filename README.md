@@ -13,7 +13,7 @@ My custom audio player in HTML5 and JavaScript without dependencies.
 
 ### Upcoming
 
-  - [ ] Audio Playlist Management
+  - [ ] Audio Playlist Management *in development*
   - [ ] Display "Next" and "Previous" buttons (and enable their functionality) with more audio track. *in testing*
   - [ ] Display "Random" (or "Shuffle") button (and enable their functionality) with more audio track.
   - [ ] Display "Loop" button (and enable their functionality).
@@ -29,6 +29,12 @@ With the first version currently available you will get what can be seen in the 
 | <img src="./screenshots/RPlayer_-_Light.png" /> | <img src="./screenshots/RPlayer_-_Dark.png" /> |
 | :---: | :---: |
 | Light Theme | Dark Theme |
+
+### New Concepts
+
+| <img src="./screenshots/RPlayer_-_Default.png" /> | <img src="./screenshots/RPlayer_-_Minimal.png" /> | <img src="./screenshots/RPlayer_-_Walkman.png" /> |
+| :---: | :---: | :---: |
+| New Default Theme | Minimal Theme | Walkman Theme |
 
 ### Support
 
